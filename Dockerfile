@@ -1,4 +1,4 @@
-FROM ubuntu:juju
+FROM ubuntu:14.04
 
 ADD setup.sh /setup.sh
 RUN /setup.sh
