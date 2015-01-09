@@ -1,7 +1,7 @@
 #!/bin/bash
 
 apt-get install -qy software-properties-common
-apt-add-repository ppa:juju/stable
+apt-add-repository -y ppa:juju/stable
 apt-get update -qq
 
 apt-get install -qy lxc iptables
