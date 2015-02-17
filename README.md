@@ -11,7 +11,7 @@ Requires Docker 1.4.1
   git clone https://github.com/whitmo/jujubox.git && cd jujubox
 
   sudo docker build -t jujubox ./
-  sudo docker run --rm --privileged -i -t jujubox
+  sudo docker run  -ti jujubox
   ```
 
 Or to use your existing ${JUJU_HOME}:
