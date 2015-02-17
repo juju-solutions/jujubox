@@ -3,7 +3,7 @@
 A docker container w/ everything you need to get start charming and
 orchestrating w/ juju.
 
-Requires Docker 1.4.1
+Requires Docker 1.4.1 or better.
 
 # To Run
 
@@ -16,7 +16,7 @@ Requires Docker 1.4.1
 
 Or to use your existing ${JUJU_HOME}:
 
-    sudo docker run --rm --privileged -v ${JUJU_HOME}:/home/ubuntu/.juju -i -t jujubox
+    `sudo docker run --rm --privileged -v ${JUJU_HOME}:/home/ubuntu/.juju -i -t jujubox`
 
 
 
@@ -34,7 +34,7 @@ If you need to set up some cloud credentials:
 
 ## Future
 
-Currently we are trying to enable this box o run juju's local provider inside the container.
+Currently we are trying to enable this box to run juju's local provider inside the container.
 
 ### note host networking
 
