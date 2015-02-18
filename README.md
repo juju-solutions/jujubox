@@ -16,7 +16,7 @@ Requires Docker 1.4.1 or better.
 
 Or to use your existing ${JUJU_HOME}:
 
-    `sudo docker run --rm --privileged -v ${JUJU_HOME}:/home/ubuntu/.juju -i -t jujubox`
+    `sudo docker run --rm -v ${JUJU_HOME}:/home/ubuntu/.juju -i -t jujubox`
 
 
 
