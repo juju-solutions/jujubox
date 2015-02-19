@@ -28,7 +28,7 @@ Or to use your existing ${JUJU_HOME}:
 
 # Once it's up
 
-All your usual juju command should work:
+All your usual juju commands should work:
 
     juju status
 
