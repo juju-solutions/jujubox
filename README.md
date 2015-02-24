@@ -43,7 +43,7 @@ From source:
     sudo docker build -t jujubox ./
 
 
-## Future
+## Future Direction
 
 We plan to build some containers that support juju local provider to
 allow juju to orchestrate lxc containers locally for inception style
