@@ -14,14 +14,46 @@ Docker >= 1.4.1 recommended.
 
 # To Run
 
+<<<<<<< HEAD
+### Linux
+```
+git clone https://github.com/whitmo/jujubox.git && cd jujubox
+
 From hub.docker.io:
 
     sudo docker run  -ti whitmo/jujubox
+    ```
 
 Or to use your existing ${JUJU_HOME}:
 
+```
     sudo docker run --rm -v ${JUJU_HOME}:/home/ubuntu/.juju -it whitmo/jujubox
 
+```
+
+### OS X
+
+Docker does not run natively in OS X, so we'll need to use VirtualBox and boot2docker. This is relatively easy for users of brew:
+
+```
+brew install cask
+brew cask install virtualbox
+brew install docker
+brew install boot2docker
+
+boot2docker init
+boot2docker up
+```
+
+When boot2docker finishes, it will prompt you to export Docker environment variables. With that done, you're ready to use docker.
+
+```
+git clone https://github.com/whitmo/jujubox.git && cd jujubox
+
+From hub.docker.io:
+    # Don't run as sudo; boot2docker runs as root.
+    docker run  -ti whitmo/jujubox
+```
 
 # Once it's up
 
