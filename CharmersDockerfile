@@ -3,6 +3,6 @@ FROM whitmo/jujubox:latest
 VOLUME ["/home/ubuntu/.juju"]
 ENV JUJU_REPOSITORY=/home/ubuntu/charm-repo
 VOLUME [${JUJU_REPOSITORY}]
-RUN apt-get install -qy gcc cython git
+RUN apt-get install -qy gcc cython git make
 RUN /mkvenv.sh
 CMD /run.sh
