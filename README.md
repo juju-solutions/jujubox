@@ -9,7 +9,7 @@ This container comes with the basics you need to get started w/ juju.
  - juju quickstart
  - [juju plugins](https://github.com/juju/plugins)
 
-Docker >= 1.4.1 recomended.
+Docker >= 1.4.1 recommended.
 
 
 # To Run
@@ -18,13 +18,17 @@ Docker >= 1.4.1 recomended.
 ```
 git clone https://github.com/whitmo/jujubox.git && cd jujubox
 
-sudo docker build -t jujubox ./
-sudo docker run  -ti jujubox
-```
+From hub.docker.io:
+
+    sudo docker run  -ti whitmo/jujubox
+    ```
 
 Or to use your existing ${JUJU_HOME}:
 
-    `sudo docker run --rm -v ${JUJU_HOME}:/home/ubuntu/.juju -i -t jujubox`
+```
+    sudo docker run --rm -v ${JUJU_HOME}:/home/ubuntu/.juju -it whitmo/jujubox
+
+```
 
 ### OS X
 
@@ -45,8 +49,7 @@ When boot2docker finishes, it will prompt you to export Docker environment varia
 git clone https://github.com/whitmo/jujubox.git && cd jujubox
 
 # Don't run as sudo; boot2docker runs as root.
-docker build -t jujubox ./
-docker run  -ti jujubox
+docker run  -ti whitmo/jujubox
 
 ```
 
@@ -62,7 +65,15 @@ If you need to set up some cloud credentials:
     juju quickstart -i
 
 
-## Future
+## Build from repo
+
+From source:
+
+    git clone https://github.com/whitmo/jujubox.git && cd jujubox
+    sudo docker build -t jujubox ./
+
+
+## Future Direction
 
 We plan to build some containers that support juju local provider to
 allow juju to orchestrate lxc containers locally for inception style
