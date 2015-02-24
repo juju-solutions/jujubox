@@ -14,6 +14,7 @@ Docker >= 1.4.1 recommended.
 
 # To Run
 
+<<<<<<< HEAD
 ### Linux
 ```
 git clone https://github.com/whitmo/jujubox.git && cd jujubox
@@ -43,14 +44,15 @@ brew install boot2docker
 boot2docker init
 boot2docker up
 ```
+
 When boot2docker finishes, it will prompt you to export Docker environment variables. With that done, you're ready to use docker.
 
 ```
 git clone https://github.com/whitmo/jujubox.git && cd jujubox
 
-# Don't run as sudo; boot2docker runs as root.
-docker run  -ti whitmo/jujubox
-
+From hub.docker.io:
+    # Don't run as sudo; boot2docker runs as root.
+    docker run  -ti whitmo/jujubox
 ```
 
 # Once it's up
