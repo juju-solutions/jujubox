@@ -14,7 +14,6 @@ Docker >= 1.4.1 recommended.
 
 # To Run
 
-<<<<<<< HEAD
 ### Linux
 ```
 git clone https://github.com/whitmo/jujubox.git && cd jujubox
