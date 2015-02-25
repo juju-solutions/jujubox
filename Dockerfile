@@ -1,4 +1,5 @@
 FROM ubuntu:14.04
+MAINTAINER Whit Morriss <whit.morriss@canonical.com>
 
 ADD setup.sh /setup.sh
 RUN /setup.sh
