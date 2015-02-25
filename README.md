@@ -21,7 +21,7 @@ git clone https://github.com/whitmo/jujubox.git && cd jujubox
 From hub.docker.io:
 
     sudo docker run  -ti whitmo/jujubox
-    ```
+```
 
 Or to use your existing ${JUJU_HOME}:
 
