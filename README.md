@@ -59,7 +59,7 @@ git clone https://github.com/whitmo/jujubox.git && cd jujubox
 Or download and install the container directly from hub.docker.io:
 
 ```
-sudo docker run  -ti whitmo/jujuox
+sudo docker run  -ti whitmo/jujubox
 ```
 
 
