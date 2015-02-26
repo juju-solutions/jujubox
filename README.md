@@ -1,26 +1,30 @@
 # Juju Box
 
-Juju Box a docker container project that provides a configured Juju environment
-with all the tools you need to work with Juju.
+Juju Box a docker container project that provides a configured Juju
+environment with all the tools you need to work with Juju.
 
 Juju provisions machines, deploy services and orchestrates them into
 systems.
 
-This container comes with the basic tools you need to get started w/ juju.
+This container comes with the basic tools you need to get started w/
+juju.
 
  - juju
  - juju quickstart
  - [juju plugins](https://github.com/juju/plugins)
 
 # Install
+
 ### Linux
-Install Docker using the package manager for your distro, or [get.docker.com](https://get.docker.com/).
+Install Docker using the package manager for your distro, or
+[get.docker.com](https://get.docker.com/).
 
 Docker >= 1.4.1 recommended.
 
 ### OS X
 
-Docker does not run natively in OS X, so we'll need to use VirtualBox and boot2docker. This is relatively easy for users of brew:
+Docker does not run natively in OS X, so we'll need to use VirtualBox
+and boot2docker. This is relatively easy for users of brew:
 
 ```
 brew install cask
@@ -36,6 +40,8 @@ When boot2docker finishes, it will prompt you to export Docker
 environment variables. With that done, you're ready to use docker.
 You do not need to run the docker commands using sudo because
 boot2docker runs as root.
+
+    docker run  -ti whitmo/jujubox
 
 # Download
 
@@ -60,13 +66,13 @@ sudo docker run  -ti whitmo/jujuox
 # To Run
 
 There are two ways to run the docker container, from the github
-repository (build from source) or from the container directly
-from the hub.docker.io.
+repository (build from source) or from the container directly from the
+hub.docker.io.
 
 
 ### Linux
 
-#### Build from source:
+#### From source:
 ```
 sudo docker build -t jujubox ./
 sudo docker run -i -t jujubox:latest
@@ -77,15 +83,15 @@ sudo docker run -i -t jujubox:latest
 sudo docker run  -ti whitmo/jujubox
 ```
 
-If you already have juju installed, run the container using your existing ${JUJU_HOME} directory (~/.juju):
+If you already have juju installed, run the container using your
+existing ${JUJU_HOME} directory (~/.juju):
 
 ```
 sudo docker run --rm -v ${JUJU_HOME}:/home/ubuntu/.juju -it whitmo/jujubox
-
 ```
 
 ### OS X
-Remmber that boot2docker runs as root, so don't use `sudo` for the docker
+Remember that boot2docker runs as root, so don't use `sudo` for the docker
 commands:
 ```
 docker run -ti whitmo/jujubox
@@ -103,7 +109,13 @@ Use Quickstart if you need to set up your cloud credentials:
     juju quickstart -i
 
 
-## Future Direction
+# Other goodies
+
+ - Charmbox: The charmers dockerfile is for developing and reviewing charms:
+   *see
+   [charmbox instructions](/whitmo/jujubox/blob/master/charmbox.md)*.
+
+# Future Direction
 
 We plan to build some containers that support juju local provider to
 allow juju to orchestrate lxc containers locally for inception style
