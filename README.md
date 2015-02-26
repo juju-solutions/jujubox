@@ -113,7 +113,7 @@ Use Quickstart if you need to set up your cloud credentials:
 
  - Charmbox: The charmers dockerfile is for developing and reviewing charms:
    *see
-   [charmbox instructions](/whitmo/jujubox/blob/master/charmbox.md)*.
+   [charmbox instructions](charmbox.md)*.
 
 # Future Direction
 
