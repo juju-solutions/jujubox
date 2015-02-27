@@ -1,6 +1,6 @@
 # Charmbox
 
-Charbox is a docker container for charm development and charm review.
+Charmbox is a docker container that contains the tools for charm development and charm review.
 
 # Download the jujubox repository
 
