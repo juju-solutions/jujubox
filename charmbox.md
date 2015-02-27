@@ -1,10 +1,14 @@
 # Charmbox
 
-This box is for charm development and charm review.
+Charbox is a docker container for charm development and charm review.
 
-# Run it
+# Download the jujubox repository
 
-    sudo docker build -f CharmersDockerfile -t charmbox
+    git clone https://github.com/whitmo/jujubox.git && cd jujubox
+
+# Build and run charmbox 
+
+    sudo docker build -f CharmersDockerfile -t charmbox /path/to/jujubox
     sudo docker run --rm -v ${JUJU_HOME}:/home/ubuntu/.juju ${JUJU_REPOSITORY}:/home/ubuntu/charm-repo -it charmbox
 
     # for reviewing
