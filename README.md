@@ -13,6 +13,10 @@ juju.
  - juju quickstart
  - [juju plugins](https://github.com/juju/plugins)
 
+Note: jujubox does not currently install juju local provider.  We hope
+to roll something that works like local provider in a container
+solution soon.
+
 # Install
 
 ### Linux
@@ -99,12 +103,8 @@ docker run -ti whitmo/jujubox
 
 # Once it's up
 
-All your usual juju commands should work:
-
-    juju status
-
-
-Use Quickstart if you need to set up your cloud credentials:
+All your usual juju commands should work. You can use Quickstart if
+you need to set up your cloud credentials:
 
     juju quickstart -i
 
@@ -114,6 +114,7 @@ Use Quickstart if you need to set up your cloud credentials:
  - Charmbox: The charmers dockerfile is for developing and reviewing charms:
    *see
    [charmbox instructions](charmbox.md)*.
+
 
 # Future Direction
 
