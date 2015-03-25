@@ -12,7 +12,7 @@ Charmbox is a docker container that contains the tools for charm development and
     sudo docker run --rm -v ${JUJU_HOME}:/home/ubuntu/.juju -v ${JUJU_REPOSITORY}:/home/ubuntu/charm-repo -it charmbox
 
     # for reviewing
-    $ubuntu@ab3d:~/$ workon charm-review
+    $ubuntu@ab3d:~/$ bundletester -t lp:~user/charms/trusty/foo/branch
 
 
 # Run against a locally hosted local provider
