@@ -1,5 +1,6 @@
 #!/bin/bash
 
+apt-get update -qq
 apt-get install -qy software-properties-common
 apt-add-repository -y ppa:juju/stable
 apt-get update -qq
