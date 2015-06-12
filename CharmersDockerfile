@@ -1,4 +1,4 @@
-FROM whitmo/jujubox:latest
+FROM jujusolutions/jujubox:latest
 
 VOLUME ["/home/ubuntu/.juju"]
 ENV JUJU_REPOSITORY=/home/ubuntu/charm-repo

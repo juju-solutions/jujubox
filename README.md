@@ -45,25 +45,25 @@ environment variables. With that done, you're ready to use docker.
 You do not need to run the docker commands using sudo because
 boot2docker runs as root.
 
-    docker run  -ti whitmo/jujubox
+    docker run  -ti jujusolutions/jujubox
 
 # Download
 
 Download the Juju Box source from github or the container from
-[hub.docker.io](https://registry.hub.docker.com/u/whitmo/jujubox/):
+[hub.docker.io](https://registry.hub.docker.com/u/jujusolutions/jujubox/):
 
 ### Linux
 You can clone the repository from github.
 
 ```
-git clone https://github.com/whitmo/jujubox.git && cd jujubox
+git clone https://github.com/jujusolutions/jujubox.git && cd jujubox
 
 ```
 
 Or download and install the container directly from hub.docker.io:
 
 ```
-sudo docker run  -ti whitmo/jujubox
+sudo docker run  -ti jujusolutions/jujubox
 ```
 
 
@@ -84,21 +84,21 @@ sudo docker run -i -t jujubox:latest
 
 #### Use hub.docker.io:
 ```
-sudo docker run  -ti whitmo/jujubox
+sudo docker run  -ti jujusolutions/jujubox
 ```
 
 If you already have juju installed, run the container using your
 existing ${JUJU_HOME} directory (~/.juju):
 
 ```
-sudo docker run --rm -v ${JUJU_HOME}:/home/ubuntu/.juju -it whitmo/jujubox
+sudo docker run --rm -v ${JUJU_HOME}:/home/ubuntu/.juju -it jujusolutions/jujubox
 ```
 
 ### OS X
 Remember that boot2docker runs as root, so don't use `sudo` for the docker
 commands:
 ```
-docker run -ti whitmo/jujubox
+docker run -ti jujusolutions/jujubox
 ```
 
 # Once it's up

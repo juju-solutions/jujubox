@@ -4,7 +4,7 @@ Charmbox is a docker container that contains the tools for charm development and
 
 # Download the jujubox repository
 
-    git clone https://github.com/whitmo/jujubox.git && cd jujubox
+    git clone https://github.com/jujusolutions/jujubox.git && cd jujubox
 
 # Build and run charmbox
 
