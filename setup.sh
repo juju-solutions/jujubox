@@ -2,7 +2,7 @@
 
 apt-get update -qq
 apt-get install -qy software-properties-common
-apt-add-repository -y ppa:juju/stable
+apt-add-repository -y ppa:juju/devel
 apt-get update -qq
 
 ## don't install lxc & local till we get local support
