@@ -11,7 +11,7 @@ apt-get update -qq
 ## actually, we need juju-local since the local provider
 ## can be used by bootstrapping from outside the container
 apt-get -qy install juju-local
-apt-get -qy install juju-core juju-quickstart juju-deployer
+apt-get -qy install juju-core juju-quickstart juju-deployer python-jujuclient
 apt-get -qy install tmux charm-tools openssh-client
 apt-get -qy install virtualenvwrapper python-dev cython git
 
