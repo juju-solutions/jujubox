@@ -1,9 +1,0 @@
-FROM whitmo/jujubox:latest
-
-VOLUME ["/home/ubuntu/.juju"]
-ENV JUJU_REPOSITORY=/home/ubuntu/charm-repo
-VOLUME [${JUJU_REPOSITORY}]
-RUN apt-get install -qy gcc cython git make
-ADD install-review-tools.sh /install-review-tools.sh
-RUN /install-review-tools.sh
-CMD /run.sh
