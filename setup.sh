@@ -7,7 +7,7 @@ apt-get update -qq
 
 ## don't install lxc & local till we get local support
 #apt-get install -qy lxc iptables juju-local
-apt-get -qy install juju-deployer juju-core2
+apt-get -qy install juju-core2
 apt-get -qy install tmux charm-tools openssh-client
 apt-get -qy install virtualenvwrapper python-dev cython git
 
