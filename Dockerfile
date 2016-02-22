@@ -10,9 +10,7 @@ RUN mkdir -p .local/share/juju && \
 
 VOLUME ["/home/ubuntu/.local/share/juju"]
 
-ADD run.sh /run.sh
 ADD cleanup.sh /cleanup.sh
-ADD charming-setup.sh /charming-setup.sh
-
-RUN /charming-setup.sh && /cleanup.sh
+RUN /cleanup.sh
+ADD run.sh /run.sh
 CMD /run.sh
