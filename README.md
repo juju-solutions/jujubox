@@ -34,10 +34,10 @@ and boot2docker. This is relatively easy for users of brew:
 brew install cask
 brew cask install virtualbox
 brew install docker
-brew install boot2docker
+brew install docker-machine
 
-boot2docker init
-boot2docker up
+docker-machine create -d virtualbox default
+eval $(docker-machine env default)
 ```
 
 When boot2docker finishes, it will prompt you to export Docker
@@ -115,8 +115,3 @@ you need to set up your cloud credentials:
    [charmbox instructions](https://github.com/juju-solutions/charmbox)*.
 
 
-# Future Direction
-
-We plan to build some containers that support juju local provider to
-allow juju to orchestrate lxc containers locally for inception style
-disposable architectures.
