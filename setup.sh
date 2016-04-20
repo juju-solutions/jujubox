@@ -7,7 +7,7 @@ apt-add-repository -y ppa:juju/devel
 apt-add-repository -y ppa:juju/stable
 apt-get update -qq
 
-apt-get -qy install juju2
+apt-get -qy install juju-2.0
 apt-get -qy install byobu vim charm-tools openssh-client
 apt-get -qy install virtualenvwrapper python-dev cython git
 
