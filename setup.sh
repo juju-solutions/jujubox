@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 
 apt-get update -qq
 apt-get install -qy software-properties-common
