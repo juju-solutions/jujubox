@@ -9,7 +9,7 @@ apt-get update -qq
 
 apt-get -qy install juju-2.0
 apt-get -qy install byobu vim charm-tools openssh-client
-apt-get -qy install virtualenvwrapper python-dev cython git
+apt-get -qy install virtualenvwrapper python-dev cython
 
 useradd -m ubuntu
 echo "ubuntu ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/juju-users
