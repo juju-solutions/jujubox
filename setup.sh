@@ -1,6 +1,7 @@
 #!/bin/bash
 set -x
 
+# Juju and Dependencies
 apt-get update -qq
 apt-get install -qy software-properties-common
 apt-add-repository -y ppa:juju/devel
@@ -9,7 +10,7 @@ apt-add-repository -y ppa:juju/stable
 apt-get update -qq
 
 apt-get -qy install juju-2.0
-apt-get -qy install byobu vim charm-tools openssh-client
+apt-get -qy install byobu vim charm-tools openssh-client sudo
 apt-get -qy install virtualenvwrapper python-dev cython
 
 useradd -m ubuntu
@@ -18,12 +19,27 @@ echo "ubuntu ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/juju-users
 HOME=/home/ubuntu
 
 RC=${HOME}/.bashrc
-echo "export JUJU_HOME=${HOME}/.juju" >> $RC
-echo "export JUJU_REPOSITORY=${HOME}" >> $RC
-echo "export PROJECT_HOME=${HOME}" >> $RC
-echo "export JUJU_DATA=${HOME}/.local/share/juju" >> $RC
+cat << EOF > $RC
+export PROJECT_HOME=${HOME}
+export JUJU_DATA=${HOME}/.local/share/juju
+export INTERFACE_PATH=${HOME}/interfaces
+export LAYER_PATH=${HOME}/layers
+echo 'welcome to juju 2.0'
+EOF
 
-echo "echo 'welcome to juju 2.0'" >> $RC
+# Create volume export paths
+mkdir -p /home/ubuntu/.local/share/juju
+mkdir /home/ubuntu/trusty
+mkdir /home/ubuntu/xenial
+mkdir /home/ubuntu/layers
+mkdir /home/ubuntu/interfaces
+mkdir /home/ubuntu/builds
 
 chown -R ubuntu:ubuntu ${HOME}
 
+# Cleanup Script moved here
+apt-get remove -qy cython gcc
+
+apt-get autoremove -qy
+apt-get autoclean -qy
+apt-get clean -qy
