@@ -100,13 +100,6 @@ sudo docker run --rm -v ${JUJU_HOME}:/home/ubuntu/.juju -it jujusolutions/jujubo
 docker run -ti jujusolutions/jujubox
 ```
 
-# Once it's up
-
-All your usual juju commands should work. You can use Quickstart if
-you need to set up your cloud credentials:
-
-    juju quickstart -i
-
 
 # Other goodies
 

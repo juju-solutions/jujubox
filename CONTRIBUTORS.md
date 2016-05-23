@@ -1,6 +1,9 @@
 # Contributors
 
  - Adam Israel
+ - Matthew Bruzek
  - Ben Saller
- - Matt Bruzek
  - Whit Morriss
+ - Charles Butler
+ - Cory Johns
+ - Kevin Monroe
