@@ -21,6 +21,7 @@ HOME=/home/ubuntu
 RC=${HOME}/.bashrc
 cat << EOF > $RC
 export PROJECT_HOME=${HOME}
+export JUJU_REPOSITORY=${HOME}
 export JUJU_DATA=${HOME}/.local/share/juju
 export INTERFACE_PATH=${HOME}/interfaces
 export LAYER_PATH=${HOME}/layers
