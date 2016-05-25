@@ -13,7 +13,7 @@ apt-get -qy install juju-2.0
 apt-get -qy install byobu vim charm-tools openssh-client sudo
 apt-get -qy install virtualenvwrapper python-dev cython
 
-useradd -m ubuntu
+useradd -m ubuntu -s /bin/bash
 echo "ubuntu ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/juju-users
 
 HOME=/home/ubuntu
