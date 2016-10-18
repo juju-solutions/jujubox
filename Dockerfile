@@ -1,20 +1,24 @@
-FROM ubuntu:14.04
-MAINTAINER Whit Morriss <whit.morriss@canonical.com>
+FROM ubuntu:16.04
+MAINTAINER Matthew Bruzek <Matthew.Bruzek@canonical.com>
 
-ADD setup.sh /setup.sh
+RUN useradd -m ubuntu -s /bin/bash
+RUN mkdir -p \
+    /home/ubuntu/.juju \
+    /home/ubuntu/builds \
+    /home/ubuntu/trusty \
+    /home/ubuntu/xenial
+
+RUN chown -R ubuntu:ubuntu /home/ubuntu
+
+VOLUME [ \
+    "/home/ubuntu/.juju", \
+    "/home/ubuntu/builds", \
+    "/home/ubuntu/trusty", \
+    "/home/ubuntu/xenial" \
+    ]
+
+COPY setup.sh /setup.sh
 RUN /setup.sh
 
-RUN mkdir /home/ubuntu/.juju
-RUN mkdir /home/ubuntu/trusty
-RUN mkdir /home/ubuntu/precise
-
-VOLUME ["/home/ubuntu/.juju"]
-
-#ADD patchcontainer.sh /patchcontainer.sh
-ADD run.sh /run.sh
-ADD cleanup.sh /cleanup.sh
-ADD charming-setup.sh /charming-setup.sh
-
-RUN /charming-setup.sh
-RUN /cleanup.sh
+COPY run.sh /run.sh
 CMD /run.sh
