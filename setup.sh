@@ -20,7 +20,6 @@ apt-get install -qy \
     juju-1 \
     juju-core \
     juju-deployer \
-    juju-local \
     openssh-client \
     python-dev \
     sudo \

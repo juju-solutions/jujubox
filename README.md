@@ -81,11 +81,9 @@ docker run --rm -it \
 
 ## jujubox and the local provider
 
-At this time you can not run the LXC provider inside of Docker. If you want to
-use the Juju local provider with jujubox you will need to bootstrap the local
-provider on the host and run jujubox with the volume mounts of ${JUJU_HOME} so
-jujubox can read your current environment.
-
+At this time you can not run the the local provider inside of Docker because 
+that is using nested containers. If you want to use the local provider install
+Juju on the host system.  
 
 # More information
 
