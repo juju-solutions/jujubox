@@ -75,7 +75,9 @@ charms are held):
 ```
 docker run --rm -it \
   -v ${JUJU_HOME}:/home/ubuntu/.juju \
-  -v ${JUJU_REPOSITORY}:/home/ubuntu/ \
+  -v ${JUJU_REPOSITORY}/builds:/home/ubuntu/builds \
+  -v ${JUJU_REPOSITORY}/trusty:/home/ubuntu/trusty \
+  -v ${JUJU_REPOSITORY}/xenial:/home/ubuntu/xenial \
   jujusolutions/jujubox
 ```
 
