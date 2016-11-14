@@ -66,8 +66,8 @@ docker run --rm -it jujusolutions/jujubox
 If you already have Juju installed on the host machine, you can mount the 
 existing host directories to the container using volume mounts (-v). Run the 
 container using your volume mounts to your existing ${JUJU_HOME} directory 
-(~/.juju) and your existing ${JUJU_REPOSITORY} directory (where the local 
-charms are held):
+(~/.juju) and your existing ${JUJU_REPOSITORY} directory (where the charms
+are held on the host):
 
 ```
 docker run --rm -it \
@@ -76,11 +76,11 @@ docker run --rm -it \
   jujusolutions/jujubox
 ```
 
-## jujubox and the local provider
+## jujubox and the LXD provider
 
-At this time you can not run the the local provider inside of Docker because 
-that is using nested containers. If you want to use the local provider install
-Juju on the host system.
+At this time you can not run jujubox on the LXD provider inside of Docker
+because of some nested container issues.  If you want to use the LXD provider
+install Juju and LXD on the host system.
 
 # More information
 
