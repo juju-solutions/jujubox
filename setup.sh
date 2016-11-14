@@ -1,7 +1,7 @@
 #!/bin/bash
 set -x
 
-# This script installs all the juju-1 and the dependencies.
+# This script installs juju version 2 and all the dependencies.
 
 # Refresh the potentially stale apt cache.
 apt-get update -qq
