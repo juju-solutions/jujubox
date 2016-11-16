@@ -8,9 +8,7 @@ apt-get update -qq
 # Install software tools such as add-apt-repository.
 apt-get install -qy software-properties-common
 # Install the ppa for Juju and charm tools.
-apt-add-repository -y ppa:juju/stable
-# Refresh the apt-cache with the new Juju PPA.
-apt-get update -qq
+apt-add-repository -u -y ppa:juju/stable
 
 # Install juju-local since the local provider can be used by bootstrapping 
 # from outside the container.
@@ -35,9 +33,9 @@ HOME=/home/ubuntu
 # Set some environment variables used by Juju.
 RC=${HOME}/.bashrc
 cat << EOF > $RC
-export PROJECT_HOME=${HOME}
+
 # The directory to look for charms.
-export JUJU_REPOSITORY=${HOME}
+export JUJU_REPOSITORY=${HOME}/charms
 # The path to Juju configuration files.
 export JUJU_DATA=${HOME}/.local/share/juju
 echo "Welcome to jujubox! Use the juju command version ${JUJU_VERSION}"
