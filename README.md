@@ -59,7 +59,7 @@ trying to accomplish.
 If you want to use Juju run the container in an interactive (-i) tty (-t) 
 session and use the command line. Since the container file system is reset each
 time it is highly recommended to mount a volume (-v) from the host system to
-the `$JUJU_DATA` directory. This will allow any Juju data to persist between 
+the `$JUJU_HOME` directory. This will allow any Juju data to persist between 
 runs of jujubox:
 
 ```
