@@ -3,6 +3,10 @@ set -x
 
 # This script installs juju version 2 and all the dependencies.
 
+if [ -z "$JUJU_USER" ]; then
+  JUJU_USER=ubuntu
+fi
+
 # Refresh the potentially stale apt cache.
 apt-get update -qq
 # Install software tools such as add-apt-repository.
@@ -22,14 +26,14 @@ apt-get install -qy \
     vim \
     virtualenvwrapper
 
-# Add ubuntu to the passwordless sudo file.
-echo "ubuntu ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/juju-users
+# Add the JUJU_USER to the passwordless sudo file.
+echo "${JUJU_USER} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/juju-users
 
 # Get the version of Juju installed.
 JUJU_VERSION=`juju version`
 
 # Set a welcome message in .bashrc with the exact version of Juju.
-RC=/home/ubuntu/.bashrc
+RC=/home/$JUJU_USER/.bashrc
 echo "echo Welcome to jujubox version ${JUJU_VERSION}" >> $RC
 
 # Cleanup unnecessary packages.
