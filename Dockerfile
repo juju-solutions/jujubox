@@ -16,7 +16,7 @@ RUN chown -R $JUJU_USER:$JUJU_USER $JUJU_REPOSITORY
 
 VOLUME [ "$JUJU_DATA", "$JUJU_REPOSITORY" ]
 
-ADD setup.sh /setup.sh
+COPY setup.sh /setup.sh
 RUN /setup.sh
 
 USER $JUJU_USER
