@@ -19,7 +19,7 @@ with jujubox and adds the functionality of
 
 ## Linux
 Install Docker using the package manager for your Linux distribution, or
-[get.docker.com](https://get.docker.com/). We recommend Docker version 1.4.1 or
+[get.docker.com](https://get.docker.com/). We recommend Docker version 1.6 or
 greater.
 
 ## Mac OS X
@@ -39,8 +39,8 @@ git clone https://github.com/jujusolutions/jujubox.git && cd jujubox
 docker build -t jujusolutions/jujubox ./
 ```
 
-Or simply pull the jujubox container from
-[hub.docker.io](https://registry.hub.docker.com/u/jujusolutions/jujubox/).
+Or simply pull the jujubox container from the
+[Docker hub](https://registry.hub.docker.com/u/jujusolutions/jujubox/).
 
 ```
 docker pull jujusolutions/jujubox
