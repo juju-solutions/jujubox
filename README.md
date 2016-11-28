@@ -84,12 +84,13 @@ See the Environment Variables
 [reference](https://jujucharms.com/docs/2.0/reference-environment-variables)
 for more information on the paths for `$JUJU_DATA` and `$JUJU_REPOSITORY`.
 
-## jujubox and the LXD provider
+## jujubox and the local provider
 
 At this time we do not support the local provider with jujubox because that is
-nested containers Docker and LXD. If you want to use the local provider you
-need Ubuntu version 14.04 (trusty) and the juju-local package installed.
-The best way to run the local provider is to install Juju on the host system.
+nested containers Docker and local provider. If you want to use the local
+provider you need Ubuntu version 14.04 (trusty) and the juju-local package
+installed.  The best way to run the local provider is to install Juju on the
+host system.
 
 # More information
 
