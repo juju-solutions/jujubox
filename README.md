@@ -14,7 +14,7 @@ This container comes with the basic tools you need to get started with Juju.
  - juju-deployer
 
 The [charmbox](https://github.com/juju-solutions/charmbox) container starts 
-jujubox and adds the functionality of 
+with jujubox and adds the functionality of 
 [charm-tools](https://github.com/juju/charm-tools) and 
 [bundletester](https://github.com/juju-solutions/bundletester).
 
@@ -54,39 +54,43 @@ docker pull jujusolutions/jujubox
 There are several different ways to run jujubox depending on what you are 
 trying to accomplish. 
 
-## Running jujubox to evaluate Juju
+## Running jujubox to use Juju
 
-If you do not already have Juju installed and want to check this container out 
-you can simply run the container in an interactive (-i) tty (-t) session to use
-the Juju tools:
-
-```
-docker run --rm -it jujusolutions/jujubox 
-```
-
-## Running jujubox if you have Juju installed on host
-
-If you already have Juju installed on the host machine, you can mount the 
-existing host directories to the container using volume mounts (-v). Run the 
-container using your volume mounts to your existing ${JUJU_HOME} directory 
-(~/.juju) and your existing ${JUJU_REPOSITORY} directory (where the local 
-charms are held):
+If you want to use Juju run the container in an interactive (-i) tty (-t) 
+session and use the command line. Since the container file system is reset each
+time it is highly recommended to mount a volume (-v) from the host system to
+the `$JUJU_HOME` directory. This will allow any Juju data to persist between 
+runs of jujubox:
 
 ```
 docker run --rm -it \
-  -v ${JUJU_HOME}:/home/ubuntu/.juju \
-  -v ${JUJU_REPOSITORY}/builds:/home/ubuntu/builds \
-  -v ${JUJU_REPOSITORY}/trusty:/home/ubuntu/trusty \
-  -v ${JUJU_REPOSITORY}/xenial:/home/ubuntu/xenial \
+  -v $HOME/.juju:/home/ubuntu/.juju \
+  jujusolutions/jujubox 
+```
+
+### Use charms from the host
+
+If you already have charms on the host machine, you can also mount the 
+`$JUJU_REPOSITORY` directory so jujubox can deploy local charms.
+
+```
+docker run --rm -it \
+  -v $HOME/.juju:/home/ubuntu/.juju \
+  -v $JUJU_REPOSITORY:/home/ubuntu/charms \
   jujusolutions/jujubox
 ```
+
+See the Environment Variables 
+[reference](https://jujucharms.com/docs/2.0/reference-environment-variables)
+for more information on the paths for `$JUJU_DATA` and `$JUJU_REPOSITORY`.
 
 ## jujubox and the local provider
 
 At this time we do not support the local provider with jujubox because that is
-nested containers Docker and LXD. If you want to use the local provider you
-need Ubuntu version 14.04 (trusty) and the juju-local package installed.
-The best way to run the local provider is to install Juju on the host system.
+nested containers Docker and local provider. If you want to use the local
+provider you need Ubuntu version 14.04 (trusty) and the juju-local package
+installed.  The best way to run the local provider is to install Juju on the
+host system.
 
 # More information
 
