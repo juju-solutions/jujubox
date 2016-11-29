@@ -1,24 +1,26 @@
 FROM ubuntu:16.04
-MAINTAINER Charles Butler <charles.butler@canonical.com>
+MAINTAINER Matthew Bruzek <Matthew.Bruzek@canonical.com>
 
-RUN useradd -m ubuntu -s /bin/bash
+ARG JUJU_USER=ubuntu
 
-RUN mkdir -p \
-  /home/ubuntu/.local/share/juju \
-  /home/ubuntu/builds \
-  /home/ubuntu/interfaces \
-  /home/ubuntu/layers \
-  /home/ubuntu/trusty \
-  /home/ubuntu/xenial
+ENV JUJU_DATA /home/$JUJU_USER/.local/share/juju
+ENV JUJU_REPOSITORY /home/$JUJU_USER/charms
 
-RUN chown -R ubuntu:ubuntu /home/ubuntu
+RUN useradd -m $JUJU_USER -s /bin/bash
 
-VOLUME ["/home/ubuntu/.local/share/juju", "/home/ubuntu/builds", "/home/ubuntu/interfaces", "/home/ubuntu/layers", "/home/ubuntu/trusty", "/home/ubuntu/xenial"]
+RUN mkdir -p $JUJU_DATA
+RUN mkdir -p $JUJU_REPOSITORY
 
-ADD setup.sh /setup.sh
-ADD run.sh /run.sh
+RUN chown -R $JUJU_USER:$JUJU_USER /home/$JUJU_USER/.local
+RUN chown -R $JUJU_USER:$JUJU_USER $JUJU_REPOSITORY
 
+VOLUME [ "$JUJU_DATA", "$JUJU_REPOSITORY" ]
+
+COPY setup.sh /setup.sh
 RUN /setup.sh
 
+USER $JUJU_USER
 
-CMD /run.sh
+WORKDIR /home/$JUJU_USER
+
+ENTRYPOINT ssh-agent /bin/bash
