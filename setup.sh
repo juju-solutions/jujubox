@@ -13,8 +13,6 @@ apt-get update -qq
 apt-get install -y software-properties-common
 # devel ppa is required for juju2 beta release
 apt-add-repository -u -y ppa:juju/devel
-# stable ppa is required for charm-tools
-apt-add-repository -u -y ppa:juju/stable
 
 # Install juju and the bare minimum components.
 apt-get install -qy \
