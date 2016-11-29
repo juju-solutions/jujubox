@@ -1,4 +1,4 @@
-TAG=jujusolutions/jujubox:latest
+TAG=jujusolutions/jujubox:devel
 
 build:
 	docker build -t ${TAG} ./
