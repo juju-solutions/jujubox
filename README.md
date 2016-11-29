@@ -1,110 +1,96 @@
 # Juju Box
 
-Juju Box a docker container project that provides a configured Juju
-environment with all the tools you need to work with Juju.
+Juju Box is a docker container project that provides a configured Juju
+environment with all the tools you need to work with 
+[Juju](https://jujucharms.com).
 
-Juju provisions machines, deploy services and orchestrates them into
-systems.
+Juju is an open source, universal model for applications. Juju allows you to 
+deploy, configure, manage, maintain, and scale cloud services quickly and 
+efficiently on public clouds, as well as on physical servers.
 
-This container comes with the basic tools you need to get started w/
-juju.
+This container comes with the basic tools you need to get started with Juju.
 
- - juju
- - juju quickstart
- - [juju plugins](https://github.com/juju/plugins)
+The [charmbox](https://github.com/juju-solutions/charmbox) container starts 
+with jujubox and adds the functionality of 
+[charm-tools](https://github.com/juju/charm-tools) and 
+[bundletester](https://github.com/juju-solutions/bundletester).
 
-Note: jujubox does not currently install juju local provider.  We hope
-to roll something that works like local provider in a container
-solution soon.
+# Install Docker
 
-# Install
+## Linux
+Install Docker using the package manager for your Linux distribution, or
+[get.docker.com](https://get.docker.com/). We recommend Docker version 1.6 or
+greater.
 
-### Linux
-Install Docker using the package manager for your distro, or
-[get.docker.com](https://get.docker.com/).
+## Mac OS X
 
-Docker >= 1.4.1 recommended.
+There are several ways to 
+[install Docker on Mac OS X](https://docs.docker.com/engine/installation/mac/). 
+Consult the latest documentation on
+[Getting Started with Docker for Mac](https://docs.docker.com/docker-for-mac/).
 
-### OS X
+# Download jujubox
 
-Docker does not run natively in OS X, so we'll need to use VirtualBox
-and boot2docker. This is relatively easy for users of brew:
-
-```
-brew install cask
-brew cask install virtualbox
-brew install docker
-brew install docker-machine
-
-docker-machine create -d virtualbox default
-eval $(docker-machine env default)
-```
-
-When boot2docker finishes, it will prompt you to export Docker
-environment variables. With that done, you're ready to use docker.
-You do not need to run the docker commands using sudo because
-boot2docker runs as root.
-
-    docker run  -ti jujusolutions/jujubox
-
-# Download
-
-Download the Juju Box source from github or the container from
-[hub.docker.io](https://registry.hub.docker.com/u/jujusolutions/jujubox/):
-
-### Linux
-You can clone the repository from github.
+If you want to see the code you can download the jujubox project from 
+[github](https://github.com/juju-solutions/jujubox) and build it from source.
 
 ```
 git clone https://github.com/jujusolutions/jujubox.git && cd jujubox
-
+docker build -t jujusolutions/jujubox ./
 ```
 
-Or download and install the container directly from hub.docker.io:
+Or simply pull the jujubox container from the
+[Docker hub](https://registry.hub.docker.com/u/jujusolutions/jujubox/).
 
 ```
-sudo docker run  -ti jujusolutions/jujubox
+docker pull jujusolutions/jujubox
 ```
 
+# Run jujubox
 
-# To Run
+There are several different ways to run jujubox depending on what you are 
+trying to accomplish. 
 
-There are two ways to run the docker container, from the github
-repository (build from source) or from the container directly from the
-hub.docker.io.
+## Running jujubox to use Juju
 
-
-### Linux
-
-#### From source:
-```
-sudo docker build -t jujubox ./
-sudo docker run -i -t jujubox:latest
-```
-
-#### Use hub.docker.io:
-```
-sudo docker run  -ti jujusolutions/jujubox
-```
-
-If you already have juju installed, run the container using your
-existing ${JUJU_HOME} directory (~/.juju):
+If you want to use Juju run the container in an interactive (-i) tty (-t) 
+session and use the command line. Since the container file system is reset each
+time it is highly recommended to mount a volume (-v) from the host system to
+the `$JUJU_DATA` directory. This will allow any Juju data to persist between 
+runs of jujubox:
 
 ```
-sudo docker run --rm -v ${JUJU_HOME}:/home/ubuntu/.juju -it jujusolutions/jujubox
+docker run --rm -it \
+  -v $JUJU_DATA:/home/ubuntu/.local/share/juju \
+  jujusolutions/jujubox 
 ```
 
-### OS X
+### Use charms from the host
+
+If you already have charms on the host machine, you can also mount the 
+`$JUJU_REPOSITORY` directory so jujubox can deploy local charms.
 
 ```
-docker run -ti jujusolutions/jujubox
+docker run --rm -it \
+  -v $JUJU_DATA:/home/ubuntu/.local/share/juju \
+  -v $JUJU_REPOSITORY:/home/ubuntu/charms \
+  jujusolutions/jujubox
 ```
 
+See the Environment Variables 
+[reference](https://jujucharms.com/docs/2.0/reference-environment-variables)
+for more information on the paths for `$JUJU_DATA` and `$JUJU_REPOSITORY`.
 
-# Other goodies
+## jujubox and the LXD provider
 
- - Charmbox: The charmers dockerfile is for developing and reviewing charms:
-   *see
-   [charmbox instructions](https://github.com/juju-solutions/charmbox)*.
+At this time you can not run jujubox on the LXD provider inside of Docker
+because of some nested container issues.  If you want to use the LXD provider
+install Juju and LXD on the host system.
 
+# More information
 
+For more information about what you can do in jujubox check out the 
+[Juju documenation](https://jujucharms.com/docs).
+
+If you find any bugs please create an issue in the 
+[jujubox github repository](https://github.com/juju-solutions/jujubox/issues).

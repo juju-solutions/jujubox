@@ -1,35 +1,48 @@
 #!/bin/bash
 set -x
 
-# Juju and Dependencies
+# This script installs juju version 2 and all the dependencies.
+
+if [ -z "$JUJU_USER" ]; then
+  JUJU_USER=ubuntu
+fi
+
+# Refresh the potentially stale apt cache.
 apt-get update -qq
-apt-get install -qy software-properties-common
-apt-add-repository -y ppa:juju/devel
-# stable ppa is required for charm-tools
-apt-add-repository -y ppa:juju/stable
-apt-get update -qq
+# Install software tools such as add-apt-repository.
+apt-get install -y software-properties-common
+# Install the ppa for Juju and charm tools.
+apt-add-repository -u -y ppa:juju/stable
 
-apt-get -qy install juju-2.0
-apt-get -qy install byobu vim charm-tools openssh-client sudo
-apt-get -qy install virtualenvwrapper python-dev cython
+# Install juju and the bare minimum components.
+apt-get install -qy \
+    byobu \
+    juju \
+    openssh-client \
+    python \
+    python3 \
+    sudo \
+    vim
 
-echo "ubuntu ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/juju-users
+# Add the JUJU_USER to the passwordless sudo file.
+echo "${JUJU_USER} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/juju-users
 
-HOME=/home/ubuntu
+# Disable strict host key checking as Juju hostnames may be reused.
+mkdir -p /home/$JUJU_USER/.ssh
+chmod 700 /home/$JUJU_USER/.ssh
+echo 'Host *' > /home/$JUJU_USER/.ssh/config
+echo '  StrictHostKeyChecking no' >> /home/$JUJU_USER/.ssh/config
+chmod 400 /home/$JUJU_USER/.ssh/config
+chown -R $JUJU_USER:$JUJU_USER /home/$JUJU_USER/.ssh
 
-RC=${HOME}/.bashrc
-cat << EOF > $RC
-export PROJECT_HOME=${HOME}
-export JUJU_REPOSITORY=${HOME}
-export JUJU_DATA=${HOME}/.local/share/juju
-export INTERFACE_PATH=${HOME}/interfaces
-export LAYER_PATH=${HOME}/layers
-echo 'welcome to juju 2.0'
-EOF
+# Get the version of Juju installed.
+JUJU_VERSION=`juju version`
 
-# Cleanup Script moved here
-apt-get remove -qy cython gcc
+# Set a welcome message in .bashrc with the exact version of Juju.
+RC=/home/$JUJU_USER/.bashrc
+echo "echo Welcome to jujubox version ${JUJU_VERSION}" >> $RC
 
+# Cleanup any unnecessary packages.
 apt-get autoremove -qy
 apt-get autoclean -qy
 apt-get clean -qy
