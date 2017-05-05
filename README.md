@@ -35,7 +35,7 @@ If you want to see the code you can download the jujubox project from
 [github](https://github.com/juju-solutions/jujubox) and build it from source.
 
 ```
-git clone https://github.com/jujusolutions/jujubox.git && cd jujubox
+git clone https://github.com/juju-solutions/jujubox.git && cd jujubox
 docker build -t jujusolutions/jujubox ./
 ```
 
