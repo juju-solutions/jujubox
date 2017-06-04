@@ -1,5 +1,5 @@
 FROM ubuntu:16.04
-MAINTAINER Matthew Bruzek <Matthew.Bruzek@canonical.com>
+LABEL maintainer "Matthew Bruzek <Matthew.Bruzek@canonical.com>"
 
 ARG JUJU_USER=ubuntu
 
