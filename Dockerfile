@@ -1,5 +1,5 @@
-FROM ubuntu:16.04
-LABEL maintainer "Matt Bruzek <mbruzek@ubuntu.com>"
+FROM ubuntu:18.04
+LABEL maintainer="Kevin Monroe <kevin.monroe@canonical.com>"
 
 ARG JUJU_USER=ubuntu
 
