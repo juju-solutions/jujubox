@@ -12,8 +12,8 @@ apt-get update -qq
 # Install software tools such as add-apt-repository.
 apt-get install -y software-properties-common
 # devel ppa is required for juju2 beta release
-# NB: forgive me for what i'm about to do. juju needs lxd, and lxd
-# in focal pulls in snapd, which doesn't work under docker; go bionic.
+# NB: forgive me for what i'm about to do. juju needs lxd, and lxd in
+# focal is installed as a snap, which doesn't work under docker; go bionic.
 cat <<EOF > /etc/apt/sources.list.d/juju-lxd-devel-bionic.list
 deb http://archive.ubuntu.com/ubuntu/ bionic main
 deb http://ppa.launchpad.net/juju/devel/ubuntu bionic main
@@ -27,7 +27,6 @@ apt-get install -qy \
     juju \
     lxd=3.0.0-0ubuntu4 lxd-client=3.0.0-0ubuntu4 \
     openssh-client \
-    python \
     python3 \
     sudo \
     vim
